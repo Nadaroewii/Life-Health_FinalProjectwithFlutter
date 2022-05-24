@@ -2,6 +2,7 @@ import 'dart:convert';
 import 'package:flspai/config.dart';
 import 'package:flspai/model/ecnrypt_request_model.dart';
 import 'package:flspai/model/encrypt_response_model.dart';
+import 'package:flspai/model/historydata.dart';
 //import 'package:flspai/model/historydata.dart';
 import 'package:flspai/model/login_request_model.dart';
 import 'package:flspai/model/login_response_model.dart';
@@ -104,23 +105,23 @@ class APIService {
       print(e);
     }
   }
-  // Future<Historydata> fetchData() async {
-  //   try {
-  //     var loginDetails = await SharedService.loginDetails();
-  //     final jsonResponse = await http
-  //         .get(Uri.parse(Config.apiURL + Config.historydataAPI),
-  //         headers: {
-  //           'Content-Type': 'application/json',
-  //           'Authorization': 'Basic ${loginDetails!.data.token}'
-  //         });
-  //
-  //     if (jsonResponse.statusCode == 200) {
-  //       print(jsonResponse.body);
-  //       return Historydata.fromJson(jsonDecode(jsonResponse.body));
-  //       //}).toList();
-  //     }
-  //   } catch (e) {
-  //     print(e);
-  //   }
-  // }
-}
+  Future getData() async {
+    try {
+          var loginDetails = await SharedService.loginDetails();
+          final jsonResponse = await http
+              .get(Uri.parse(Config.apiURL + Config.historydataAPI),
+              headers: {
+                'Authorization': 'Bearer ${loginDetails!.data.token}'
+              });
+
+          if (jsonResponse.statusCode == 200) {
+            print(jsonResponse.body[int.parse('data')]);
+            Iterable it = jsonDecode(jsonResponse.body[int.parse('data')]);
+            List<Historydata> historydata = it.map((e) => Historydata.fromJson(e)).toList();
+            return historydata;
+            }
+        } catch (e) {
+          print(e.toString());
+        }
+      }
+    }

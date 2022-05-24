@@ -53,6 +53,11 @@ final StopWatchTimer _stopWatchTimer = StopWatchTimer();
   //Ai Stuff
   final ModelProcessor _model = ModelProcessor();
   String _aiResult = "";
+  @override
+  void dispose() async {
+    super.dispose();
+    await _stopWatchTimer.dispose(); // Need to call dispose function.
+  }
 
   void updateValues() {
     //print("Updated !");
@@ -97,13 +102,6 @@ final StopWatchTimer _stopWatchTimer = StopWatchTimer();
     _model.initModel();
   }
 
-  @override
-  @override
-  void dispose() async {
-    super.dispose();
-    await _stopWatchTimer.dispose(); // Need to call dispose function.
-  }
-
 void _onMapCreated(GoogleMapController controller) {
   _mapController = controller;
   double appendDist;
@@ -136,7 +134,7 @@ void _onMapCreated(GoogleMapController controller) {
         startCap: Cap.roundCap,
         endCap: Cap.roundCap,
         color: Colors.deepOrange));
-    setState(() {});
+    //setState(() {});
   });
 }
 
@@ -161,132 +159,132 @@ Widget build(BuildContext context) =>
         ),
         body: Container(
         width: MediaQuery.of(context).size.width,
-height: MediaQuery.of(context).size.height,
-child: SingleChildScrollView(
-child: Column(children: [
-Container(
-height: MediaQuery.of(context).size.height * 0.1,
-width: MediaQuery.of(context).size.width * 1,
-color: fromCssColor('#FFDC97'),
-child: Row(
-mainAxisAlignment: MainAxisAlignment.center,
-crossAxisAlignment: CrossAxisAlignment.center,
-children: <Widget>[
-Text(
-'LifeHealth',
-textAlign: TextAlign.center,
-style:
-TextStyle(fontSize: 22,
-fontFamily: "Roboto",
-fontWeight: FontWeight.bold,
-height: 3.0,
-color: Colors.brown),
-),
-],),
-),
-Container(
-height: 400,
-child: GoogleMap(
-polylines: polyline,
-onMapCreated: _onMapCreated,
-myLocationEnabled: true,
-initialCameraPosition: CameraPosition(target: _center, zoom: 19),
-)
-),
-Container(
-padding: EdgeInsets.all(20),
-child: Column(
-crossAxisAlignment: CrossAxisAlignment.start,
-mainAxisAlignment: MainAxisAlignment.center,
-children: [
-SizedBox(height: 10),
-Row(
-mainAxisAlignment: MainAxisAlignment.spaceBetween,
-children: [
-Column(
-children: [
-Text("Speed (KM/H)",
-style: TextStyle(fontSize: 12,
-fontFamily: "Roboto",
-fontWeight: FontWeight.bold,
-height: 2.0,
-color: Colors.black)),
-Text(_speed.toStringAsFixed(2),
-style: TextStyle(fontSize: 12,
-fontFamily: "Roboto",
-fontWeight: FontWeight.bold,
-height: 2.0,
-color: Colors.black))
-],
-),
-Column(
-children: [
-Text("Time",
-style: TextStyle(fontSize: 12,
-fontFamily: "Roboto",
-fontWeight: FontWeight.bold,
-height: 2.0,
-color: Colors.black)),
-StreamBuilder<int>(
-stream: _stopWatchTimer.rawTime,
-initialData: 0,
-builder: (context, snap) {
-_time = snap.data!;
-_displayTime =
-StopWatchTimer.getDisplayTimeHours(
-_time) +
-":" +
-StopWatchTimer.getDisplayTimeMinute(
-_time) +
-":" +
-StopWatchTimer.getDisplayTimeSecond(
-_time);
-return Text(_displayTime,
-style: TextStyle(fontSize: 12,
-fontFamily: "Roboto",
-fontWeight: FontWeight.bold,
-height: 2.0,
-color: Colors.black));
-},
-)
-],
-),
-Column(
-children: [
-Text("Distance (KM)",
-style: TextStyle(fontSize: 12,
-fontFamily: "Roboto",
-fontWeight: FontWeight.bold,
-height: 2.0,
-color: Colors.black)),
-Text((_dist / 1000).toStringAsFixed(2),
-style: TextStyle(fontSize: 12,
-fontFamily: "Roboto",
-fontWeight: FontWeight.bold,
-height: 2.0,
-color: Colors.black))
-],
-)
-],
-),
-SizedBox(height: 10),
-Column(
-  crossAxisAlignment: CrossAxisAlignment.center,
-  mainAxisAlignment: MainAxisAlignment.center,
-  children: [
-  Text("Jenis Aktivitas",
-  style: TextStyle(fontSize: 12,
-  fontFamily: "Roboto",
-  fontWeight: FontWeight.bold,
-  height: 2.0,
-  color: Colors.black)),
-  Text(_aiResult,
-  style: TextStyle(fontSize: 12,
-  fontFamily: "Roboto",
-  fontWeight: FontWeight.bold,
-  height: 2.0,
-  color: Colors.black))
-  ]
+          height: MediaQuery.of(context).size.height,
+          child: SingleChildScrollView(
+          child: Column(children: [
+          Container(
+          height: MediaQuery.of(context).size.height * 0.1,
+          width: MediaQuery.of(context).size.width * 1,
+          color: fromCssColor('#FFDC97'),
+          child: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: <Widget>[
+          Text(
+          'LifeHealth',
+          textAlign: TextAlign.center,
+          style:
+          TextStyle(fontSize: 22,
+          fontFamily: "Roboto",
+          fontWeight: FontWeight.bold,
+          height: 3.0,
+          color: Colors.brown),
+          ),
+          ],),
+          ),
+          Container(
+          height: 400,
+          child: GoogleMap(
+          polylines: polyline,
+          onMapCreated: _onMapCreated,
+          myLocationEnabled: true,
+          initialCameraPosition: CameraPosition(target: _center, zoom: 19),
+          )
+          ),
+          Container(
+          padding: EdgeInsets.all(20),
+          child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+          SizedBox(height: 10),
+          Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+          Column(
+          children: [
+          Text("Speed (KM/H)",
+          style: TextStyle(fontSize: 12,
+          fontFamily: "Roboto",
+          fontWeight: FontWeight.bold,
+          height: 2.0,
+          color: Colors.black)),
+          Text(_speed.toStringAsFixed(2),
+          style: TextStyle(fontSize: 12,
+          fontFamily: "Roboto",
+          fontWeight: FontWeight.bold,
+          height: 2.0,
+          color: Colors.black))
+          ],
+          ),
+          Column(
+          children: [
+          Text("Time",
+          style: TextStyle(fontSize: 12,
+          fontFamily: "Roboto",
+          fontWeight: FontWeight.bold,
+          height: 2.0,
+          color: Colors.black)),
+          StreamBuilder<int>(
+          stream: _stopWatchTimer.rawTime,
+          initialData: 0,
+          builder: (context, snap) {
+          _time = snap.data!;
+          _displayTime =
+          StopWatchTimer.getDisplayTimeHours(
+          _time) +
+          ":" +
+          StopWatchTimer.getDisplayTimeMinute(
+          _time) +
+          ":" +
+          StopWatchTimer.getDisplayTimeSecond(
+          _time);
+          return Text(_displayTime,
+          style: TextStyle(fontSize: 12,
+          fontFamily: "Roboto",
+          fontWeight: FontWeight.bold,
+          height: 2.0,
+          color: Colors.black));
+          },
+          )
+          ],
+          ),
+          Column(
+          children: [
+          Text("Distance (KM)",
+          style: TextStyle(fontSize: 12,
+          fontFamily: "Roboto",
+          fontWeight: FontWeight.bold,
+          height: 2.0,
+          color: Colors.black)),
+          Text((_dist / 1000).toStringAsFixed(2),
+          style: TextStyle(fontSize: 12,
+          fontFamily: "Roboto",
+          fontWeight: FontWeight.bold,
+          height: 2.0,
+          color: Colors.black))
+          ],
+          )
+          ],
+          ),
+          SizedBox(height: 10),
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+            Text("Jenis Aktivitas",
+            style: TextStyle(fontSize: 12,
+            fontFamily: "Roboto",
+            fontWeight: FontWeight.bold,
+            height: 2.0,
+            color: Colors.black)),
+            Text(_aiResult,
+            style: TextStyle(fontSize: 12,
+            fontFamily: "Roboto",
+            fontWeight: FontWeight.bold,
+            height: 2.0,
+            color: Colors.black))
+            ]
 ),
 ]),
 ),

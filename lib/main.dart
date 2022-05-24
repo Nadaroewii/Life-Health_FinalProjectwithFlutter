@@ -1,3 +1,4 @@
+import 'package:flspai/page/Record.dart';
 import 'package:flutter/material.dart';
 //import 'package:flspai/page/Record.dart';
 import 'package:flspai/page/login.dart';
@@ -26,6 +27,7 @@ class MyApp extends StatelessWidget {
         '/login': (context) => const LoginPage(),
         '/startdata': (context) => const Start(),
         '/register': (context) => const SignUp(),
+        '/historydata': (context) => RecordData(),
         // '/historydata': (context) => RecordData(),
       },
     );

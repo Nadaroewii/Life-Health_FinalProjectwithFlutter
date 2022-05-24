@@ -17,6 +17,7 @@ import 'package:snippet_coder_utils/FormHelper.dart';
 import 'package:flspai/services/api_services.dart';
 
 import '../config.dart';
+import 'Record.dart';
 //import 'package:flutter_signup/encryption/encrypt.dart';
 
 
@@ -428,10 +429,11 @@ class _DataFinishState extends State<DataFinish> {
                                   "Data berhasil dikirim ke server, Anda dapat 10 Poin",
                                   "OK",
                                       () {
-                                    Navigator.pushNamedAndRemoveUntil(
+                                    Navigator.push(
                                         context,
-                                        '/startdata',
-                                            (route) => false);
+                                        MaterialPageRoute(builder: (context)
+                                            => RecordData())
+                                    );
                                   },
                                 );
                               }
