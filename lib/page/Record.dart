@@ -1,5 +1,6 @@
 import 'dart:core';
 import 'dart:math';
+import 'package:flspai/page/mulai.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flspai/services/shared_services.dart';
@@ -45,21 +46,30 @@ class _RecordDataState extends State<RecordData> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: fromCssColor('#FFDC97'),
-        title: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.center,
+        title: Row(
+          mainAxisAlignment: MainAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
               'LifeHealth',
               style:
-              TextStyle(fontSize: 24,
+              TextStyle(fontSize: 21,
                   fontFamily: "Roboto",
                   fontWeight: FontWeight.bold,
-                  height: 3.0,
+                  height: 1.0,
                   color: Colors.brown),
             ),
           ],),
       ),
+        bottomSheet: Container(
+          width: double.infinity,
+          color: Colors.brown,
+          height: 50,
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.center,
+          ),
+        ),
           body: Column(
           children: [
           ListView.separated(
@@ -76,7 +86,23 @@ class _RecordDataState extends State<RecordData> {
               separatorBuilder: (context, index){
                 return Divider();
             }, itemCount: listdata.length),
-      SizedBox(height: 30),
+            SizedBox(height: 30),
+            Center(
+                child: FormHelper.submitButton(
+                    "Ambil Data",
+                        () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(builder: (context)
+                          => Start())
+                          );
+                    },
+                    btnColor: Colors.brown,
+                    borderColor: Colors.white,
+                    txtColor: Colors.white,
+                    borderRadius: 10)
+            ),
+            SizedBox(height: 30),
       Center(
           child: FormHelper.submitButton(
               "Log Out",

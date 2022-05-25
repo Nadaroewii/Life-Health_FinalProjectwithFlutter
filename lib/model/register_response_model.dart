@@ -30,12 +30,14 @@ class Data {
     required this.name,
     required this.email,
     required this.date,
+    //required this.ClientpubKey,
     required this.id,
   });
   late final String username;
   late final String name;
   late final String email;
   late final String date;
+  //late final List<dynamic> ClientpubKey;
   late final String id;
 
   Data.fromJson(Map<String, dynamic> json){
@@ -43,6 +45,7 @@ class Data {
     name = json['name'];
     email = json['email'];
     date = json['date'];
+    //ClientpubKey = json['ClientpubKey'];
     id = json['id'];
   }
 
@@ -52,6 +55,7 @@ class Data {
     _data['name'] = name;
     _data['email'] = email;
     _data['date'] = date;
+    //_data['ClientpubKey'] = ClientpubKey;
     _data['id'] = id;
     return _data;
   }

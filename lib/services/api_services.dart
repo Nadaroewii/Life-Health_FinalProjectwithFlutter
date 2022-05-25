@@ -115,8 +115,8 @@ class APIService {
               });
 
           if (jsonResponse.statusCode == 200) {
-            print(jsonResponse.body[int.parse('data')]);
-            Iterable it = jsonDecode(jsonResponse.body[int.parse('data')]);
+            print(jsonResponse.body);
+            Iterable it = jsonDecode(jsonResponse.body);
             List<Historydata> historydata = it.map((e) => Historydata.fromJson(e)).toList();
             return historydata;
             }

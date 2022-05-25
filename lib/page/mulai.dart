@@ -4,6 +4,11 @@ import 'package:flutter/material.dart';
 import 'package:flspai/page/otherpage.dart';
 import 'package:flspai/model/Start.dart';
 import 'package:from_css_color/from_css_color.dart';
+import 'package:snippet_coder_utils/FormHelper.dart';
+
+import '../config.dart';
+import '../model/login_response_model.dart';
+import '../services/shared_services.dart';
 
 
 class Start extends StatefulWidget {
@@ -32,6 +37,23 @@ class _StartState extends State<Start> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        backgroundColor: fromCssColor('#FFDC97'),
+        title: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            Text(
+              'LifeHealth',
+              style:
+              TextStyle(fontSize: 21,
+                  fontFamily: "Roboto",
+                  fontWeight: FontWeight.bold,
+                  height: 1.0,
+                  color: Colors.brown),
+            ),
+          ],),
+      ),
       bottomSheet: Container(
         width: double.infinity,
         color: Colors.brown,
@@ -45,23 +67,7 @@ class _StartState extends State<Start> {
         width: MediaQuery.of(context).size.width,
         height: MediaQuery.of(context).size.height,
         child: SingleChildScrollView(
-          child: Column(children: [
-            Container(
-              height: MediaQuery.of(context).size.height * 0.1,
-              width: MediaQuery.of(context).size.width * 1,
-              color: fromCssColor('#FFDC97'),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children:<Widget>[
-                  Text(
-                    'LifeHealth',
-                    textAlign: TextAlign.center,
-                    style:
-                    TextStyle(fontSize: 22, fontFamily: "Roboto", fontWeight: FontWeight.bold,height: 3.0, color: Colors.brown),
-                  ),
-                ],),
-            ),
+          child:
             Container(
               padding: EdgeInsets.all(30),
               child: Column(
@@ -159,7 +165,22 @@ class _StartState extends State<Start> {
                               height: _heightController.text,
                               weight: _weightController.text,
                             );
+                            //Mengambil Clientpubkey
+                            LoginResponseModel? loginDetails = await SharedService.loginDetails();
+                            var pcli = loginDetails!.data.ClientpubKey[0];
+                            var gcli = loginDetails!.data.ClientpubKey[1];
+                            var ycli = loginDetails!.data.ClientpubKey[2];
+                            var xcli = loginDetails!.data.ClientprivKey[0];
+
+                            FormHelper.showSimpleAlertDialog(
+                            context,
+                            Config.appName,
+                            "Client's Public Key : $pcli,$gcli,$ycli \nClient's Private Key : $xcli",
+                            "OK",
+                            () {
                             Navigator.push(context, MaterialPageRoute(builder: (context) => OtherPage(mulai: mulai)));
+                            },
+                            );
                           },
                           child: Text("Start",
                               style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),)
@@ -168,10 +189,8 @@ class _StartState extends State<Start> {
                   ),
                 ],
               ),
-            )
-          ],),
-        ),
-      ),
+            ),
+                  ))
     );
   }
 }

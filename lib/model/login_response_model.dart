@@ -32,8 +32,8 @@ class Data{
     required this.id,
     required this.token,
     required this.ServerpubKey,
-    //required this.ClientpubKey,
-    //required this.ClientprivKey,
+    required this.ClientpubKey,
+    required this.ClientprivKey,
 });
   late final String username;
   late final String name;
@@ -42,8 +42,8 @@ class Data{
   late final String id;
   late final String token;
   late final List<dynamic> ServerpubKey;
-  //late final List<dynamic> ClientpubKey;
-  //late final List<dynamic> ClientprivKey;
+  late final List<dynamic> ClientpubKey;
+  late final List<dynamic> ClientprivKey;
 
 
   Data.fromJson(Map<String, dynamic> json){
@@ -54,8 +54,8 @@ class Data{
     id = json['id'];
     token = json['token'];
     ServerpubKey = json['ServerpubKey'];
-    //ClientpubKey = json['ClientpubKey'];
-    //ClientprivKey = json['ClientprivKey'];
+    ClientpubKey = json['ClientpubKey'];
+    ClientprivKey = json['ClientprivKey'];
   }
 
   Map<String, dynamic> toJson() {
@@ -67,8 +67,8 @@ class Data{
     _data['id'] = id;
     _data['token'] = token;
     _data['ServerpubKey'] = ServerpubKey;
-    //_data['ClientpubKey'] = ClientpubKey;
-    //_data['ClientprivKey'] = ClientprivKey;
+    _data['ClientpubKey'] = ClientpubKey;
+    _data['ClientprivKey'] = ClientprivKey;
     return _data;
   }
 }

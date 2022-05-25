@@ -19,13 +19,13 @@ class Historydata{
 
   factory Historydata.fromJson(Map<String, dynamic> json){
     return Historydata(
-        id: json['id'] as String,
-        duration: json['duration'] as String,
-        distance: json['distance'] as String,
-        dataact: json['dataact'] as String,
-        kal: json['kal'] as String,
-        lastlatitude: json['lastlatitude'] as String,
-        lastlongitude: json['lastlongitude'] as String,
+        id: json['id'],
+        duration: json['duration'],
+        distance: json['distance'],
+        dataact: json['dataact'],
+        kal: json['kal'],
+        lastlatitude: json['lastlatitude'],
+        lastlongitude: json['lastlongitude'],
     );
   }
 

@@ -148,6 +148,23 @@ void tesTapButton() {
 @override
 Widget build(BuildContext context) =>
     Scaffold(
+        appBar: AppBar(
+          backgroundColor: fromCssColor('#FFDC97'),
+          title: Row(
+            mainAxisAlignment: MainAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                'LifeHealth',
+                style:
+                TextStyle(fontSize: 21,
+                    fontFamily: "Roboto",
+                    fontWeight: FontWeight.bold,
+                    height: 1.0,
+                    color: Colors.brown),
+              ),
+            ],),
+        ),
         bottomSheet: Container(
           width: double.infinity,
           color: Colors.brown,
@@ -162,26 +179,6 @@ Widget build(BuildContext context) =>
           height: MediaQuery.of(context).size.height,
           child: SingleChildScrollView(
           child: Column(children: [
-          Container(
-          height: MediaQuery.of(context).size.height * 0.1,
-          width: MediaQuery.of(context).size.width * 1,
-          color: fromCssColor('#FFDC97'),
-          child: Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: <Widget>[
-          Text(
-          'LifeHealth',
-          textAlign: TextAlign.center,
-          style:
-          TextStyle(fontSize: 22,
-          fontFamily: "Roboto",
-          fontWeight: FontWeight.bold,
-          height: 3.0,
-          color: Colors.brown),
-          ),
-          ],),
-          ),
           Container(
           height: 400,
           child: GoogleMap(
