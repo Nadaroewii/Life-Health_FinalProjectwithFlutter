@@ -24,7 +24,7 @@ class RecordData extends StatefulWidget {
 }
 
 class _RecordDataState extends State<RecordData> {
-  List<Historydata> listdata = [];
+  List<Historydata> listdata = [] ;
   APIService apiService = APIService();
 
   getData() async{

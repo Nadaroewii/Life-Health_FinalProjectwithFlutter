@@ -81,7 +81,7 @@ class _DataFinishState extends State<DataFinish> {
     List <int> listNumber = [];
     var pp = p - 2;
     int rand;
-    print("nilai pp = " + pp.toString());
+    //print("nilai pp = " + pp.toString());
     for (var i = 0; i < pesan.length; i++) {
          //do{
           //var random = new Random();
