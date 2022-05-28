@@ -14,7 +14,6 @@ import 'package:http/http.dart' as http;
 class APIService {
   static var client = http.Client();
 
-
   static Future<bool> login(Map model) async {
     print(model);
     Map<String, String> requestHeaders = {
@@ -38,8 +37,7 @@ class APIService {
     }
   }
 
-  static Future<RegisterResponseModel> register(
-      Map model) async {
+  static Future<RegisterResponseModel> register(Map model) async {
     Map<String, String> requestHeaders = {
       'Content-Type': 'application/x-www-form-urlencoded',
     };
@@ -105,23 +103,26 @@ class APIService {
       print(e);
     }
   }
+
   Future getData() async {
     try {
-          var loginDetails = await SharedService.loginDetails();
-          final jsonResponse = await http
-              .get(Uri.parse(Config.apiURL + Config.historydataAPI),
-              headers: {
-                'Authorization': 'Bearer ${loginDetails!.data.token}'
-              });
+      var loginDetails = await SharedService.loginDetails();
+      final jsonResponse = await http
+          .get(Uri.parse(Config.apiURL + Config.historydataAPI), headers: {
+        //'Content-Type': 'application/x-www-form-urlencoded',
+        'Authorization': 'Bearer ${loginDetails!.data.token}'
+      });
 
-          if (jsonResponse.statusCode == 200) {
-            print(jsonResponse.body);
-            Iterable it = jsonDecode(jsonResponse.body);
-            List<Historydata> historydata = it.map((e) => Historydata.fromJson(e)).toList();
-            return historydata;
-            }
-        } catch (e) {
-          print(e.toString());
-        }
+      if (jsonResponse.statusCode == 200) {
+        print(jsonResponse.body);
+        Iterable it = jsonDecode(jsonResponse.body);
+        List<Historydata> historydata =
+            it.map((e) => Historydata.fromJson(e)).toList();
+        return historydata;
+        //return Historydata.fromJson(jsonDecode(jsonResponse.body));
       }
+    } catch (e) {
+      print(e.toString());
     }
+  }
+}

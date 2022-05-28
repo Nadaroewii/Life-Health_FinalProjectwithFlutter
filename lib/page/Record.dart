@@ -24,17 +24,19 @@ class RecordData extends StatefulWidget {
 }
 
 class _RecordDataState extends State<RecordData> {
-  List<Historydata> listdata = [] ;
-  APIService apiService = APIService();
-
-  getData() async{
-    listdata = await apiService.getData();
+  List<Historydata> listdata = [];
+  APIService apiservice = APIService();
+  //late Future<Historydata> historydata;
+  getData() async {
+    listdata = await apiservice.getData();
     setState(() {});
   }
+
   @override
   void initState() {
     getData();
     super.initState();
+    // historydata = APIService.getData();
   }
 
   //
@@ -44,23 +46,24 @@ class _RecordDataState extends State<RecordData> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: fromCssColor('#FFDC97'),
-        title: Row(
-          mainAxisAlignment: MainAxisAlignment.start,
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text(
-              'LifeHealth',
-              style:
-              TextStyle(fontSize: 21,
-                  fontFamily: "Roboto",
-                  fontWeight: FontWeight.bold,
-                  height: 1.0,
-                  color: Colors.brown),
-            ),
-          ],),
-      ),
+        appBar: AppBar(
+          backgroundColor: fromCssColor('#FFDC97'),
+          title: Row(
+            mainAxisAlignment: MainAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                'LifeHealth',
+                style: TextStyle(
+                    fontSize: 21,
+                    fontFamily: "Roboto",
+                    fontWeight: FontWeight.bold,
+                    height: 1.0,
+                    color: Colors.brown),
+              ),
+            ],
+          ),
+        ),
         bottomSheet: Container(
           width: double.infinity,
           color: Colors.brown,
@@ -70,52 +73,89 @@ class _RecordDataState extends State<RecordData> {
             crossAxisAlignment: CrossAxisAlignment.center,
           ),
         ),
-          body: Column(
-          children: [
+        body: Column(children: [
+          Text(
+            'History Data',
+            style: TextStyle(
+                fontSize: 21,
+                fontFamily: "Roboto",
+                fontWeight: FontWeight.bold,
+                height: 1.0,
+                color: Colors.black),
+          ),
+          //FutureBuilder<Historydata>(
+          //future: historydata,
+          //builder: (context, snapshot) {
+          //if (snapshot.hasData) {
+          // return Text('Activity Type : ' +
+          // snapshot.data!.dataact +
+          // ' / ' +
+          // 'Duration : ' +
+          // snapshot.data!.duration +
+          // ' / ' +
+          // ' Distance : ' +
+          // snapshot.data!.distance +
+          //' / ' +
+          //' Calories Burned : ' +
+          //snapshot.data!.kal +
+          //' / ' +
+          //' Last Coordinate : ( ' +
+          //snapshot.data!.lastlatitude +
+          //' , ' +
+          //  snapshot.data!.lastlongitude +
+          //    ' )');
+          //} else if (snapshot.hasError) {
+          //return Text('${snapshot.error}');
+          //}
+
+          //  return const CircularProgressIndicator();
+          //  }),
           ListView.separated(
-            scrollDirection: Axis.vertical,
+              scrollDirection: Axis.vertical,
               shrinkWrap: true,
               itemBuilder: (context, index) {
-                return Container(child: Text(
-                    'Activity Type : ' + listdata[index].dataact
-                        + ' / ' + ' Duration : ' + listdata[index].duration + ' / ' + ' Distance : ' +
-                        listdata[index].distance + ' / ' + ' Calories Burned : ' + listdata[index].kal + ' / ' + ' Last Latitude : '
-                        + listdata[index].lastlatitude + ' / ' + ' Last Longitude : ' + listdata[index].lastlongitude)
-                );
+                return Container(
+                    child: Text('Activity Type : ' +
+                        listdata[index].dataact +
+                        ' / ' +
+                        ' Duration : ' +
+                        listdata[index].duration +
+                        ' / ' +
+                        ' Distance : ' +
+                        listdata[index].distance +
+                        ' / ' +
+                        ' Calories Burned : ' +
+                        listdata[index].kal +
+                        ' / ' +
+                        ' Last Latitude : ' +
+                        listdata[index].lastlatitude +
+                        ' / ' +
+                        ' Last Longitude : ' +
+                        listdata[index].lastlongitude));
               },
-              separatorBuilder: (context, index){
+              separatorBuilder: (context, index) {
                 return Divider();
-            }, itemCount: listdata.length),
-            SizedBox(height: 30),
-            Center(
-                child: FormHelper.submitButton(
-                    "Ambil Data",
-                        () {
-                          Navigator.push(
-                              context,
-                              MaterialPageRoute(builder: (context)
-                          => Start())
-                          );
-                    },
-                    btnColor: Colors.brown,
-                    borderColor: Colors.white,
-                    txtColor: Colors.white,
-                    borderRadius: 10)
-            ),
-            SizedBox(height: 30),
-      Center(
-          child: FormHelper.submitButton(
-              "Log Out",
-                  () {
-                SharedService.logout(context);
               },
-              btnColor: Colors.brown,
-              borderColor: Colors.white,
-              txtColor: Colors.white,
-              borderRadius: 10)
-      ),
-])
-    );
-    }
+              itemCount: listdata.length),
+          SizedBox(height: 30),
+          Center(
+              child: FormHelper.submitButton("Retrieve Data", () {
+            Navigator.push(
+                context, MaterialPageRoute(builder: (context) => Start()));
+          },
+                  btnColor: Colors.brown,
+                  borderColor: Colors.white,
+                  txtColor: Colors.white,
+                  borderRadius: 10)),
+          SizedBox(height: 30),
+          Center(
+              child: FormHelper.submitButton("Log Out", () {
+            SharedService.logout(context);
+          },
+                  btnColor: Colors.brown,
+                  borderColor: Colors.white,
+                  txtColor: Colors.white,
+                  borderRadius: 10)),
+        ]));
   }
-
+}
