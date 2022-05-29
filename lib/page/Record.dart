@@ -80,7 +80,7 @@ class _RecordDataState extends State<RecordData> {
                 fontSize: 21,
                 fontFamily: "Roboto",
                 fontWeight: FontWeight.bold,
-                height: 1.0,
+                height: 2.0,
                 color: Colors.black),
           ),
           //FutureBuilder<Historydata>(

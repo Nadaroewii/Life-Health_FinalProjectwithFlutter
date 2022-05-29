@@ -45,7 +45,8 @@ class _DataFinishState extends State<DataFinish> {
   _kalori(weight, duration, dist) {
     //_kalori(dist) {
     //double kal;
-    //kal = 60.0 * (dist);
+    //double distance = (dist) / 100;
+    //kal = 60.0 * (distance);
     double kec = (dist / 1000) / (duration / 60);
     double kal;
     var berat = int.parse(weight);
@@ -272,7 +273,7 @@ class _DataFinishState extends State<DataFinish> {
                         ),
                         Text(
                           ' ' +
-                              // _kalori(entry.distance) +
+                              //  _kalori(entry.distance) +
                               _kalori(mulai.weight, entry.waktutot,
                                   entry.distance) +
                               ' kal',
@@ -436,7 +437,7 @@ class _DataFinishState extends State<DataFinish> {
                         FormHelper.showSimpleAlertDialog(
                           context,
                           Config.appName,
-                          "Data berhasil dikirim ke server, Anda dapat 10 Poin",
+                          "Data sent to server successfully, You got 10 Point",
                           "OK",
                           () {
                             Navigator.push(

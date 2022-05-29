@@ -91,7 +91,8 @@ class APIService {
         'dataactv': json.encode(dataactv),
         'kal': json.encode(kal),
         'lastlatitude': json.encode(lastlatitude),
-        'lastlongitude': json.encode(lastlongitude)
+        'lastlongitude': json.encode(lastlongitude),
+        'userId': loginDetails!.data.id
       });
 
       if (responsedata.statusCode != 200) {
@@ -109,8 +110,7 @@ class APIService {
       var loginDetails = await SharedService.loginDetails();
       final jsonResponse = await http
           .get(Uri.parse(Config.apiURL + Config.historydataAPI), headers: {
-        //'Content-Type': 'application/x-www-form-urlencoded',
-        'Authorization': 'Bearer ${loginDetails!.data.token}'
+        'Authorization': 'Bearer ${loginDetails!.data.token}',
       });
 
       if (jsonResponse.statusCode == 200) {
