@@ -1,7 +1,6 @@
 class Config {
   static const String appName = "LifeHealth App";
-  static const String apiURL =
-      "https://clever-forks-roll-110-139-42-68.loca.lt";
+  static const String apiURL = "https://nada-ta.herokuapp.com/";
   static const String loginAPI = "/users/login";
   static const String registerAPI = "/users/register";
   static const String userProfileAPI = "/users/user-profile";
