@@ -1,11 +1,11 @@
 class Historydata {
-  final String id;
-  final String duration;
-  final String distance;
-  final String dataact;
-  final String kal;
-  final String lastlatitude;
-  final String lastlongitude;
+  final String? id;
+  final String? duration;
+  final String? distance;
+  final String? dataact;
+  final String? kal;
+  final String? lastlatitude;
+  final String? lastlongitude;
 
   Historydata(
       {required this.id,
@@ -18,13 +18,13 @@ class Historydata {
 
   factory Historydata.fromJson(Map<String, dynamic> json) {
     return Historydata(
-      id: json['id'],
-      duration: json['duration'],
-      distance: json['distance'],
-      dataact: json['dataact'],
-      kal: json['kal'],
-      lastlatitude: json['lastlatitude'],
-      lastlongitude: json['lastlongitude'],
+      id: json['id'].toString(),
+      duration: json['duration'].toString(),
+      distance: json['distance'].toString(),
+      dataact: json['dataact'].toString(),
+      kal: json['kal'].toString(),
+      lastlatitude: json['lastlatitude'].toString(),
+      lastlongitude: json['lastlongitude'].toString(),
     );
   }
 }

@@ -28,6 +28,8 @@ class APIService {
       body: model,
     );
 
+    print(response.body);
+
     if (response.statusCode == 200) {
       //SHARED
       await SharedService.setLoginDetails(loginResponseJson(response.body));
@@ -48,6 +50,8 @@ class APIService {
       headers: requestHeaders,
       body: model,
     );
+
+    print(response.body);
     return registerResponseModel(response.body);
   }
 
@@ -113,9 +117,12 @@ class APIService {
         'Authorization': 'Bearer ${loginDetails!.data.token}',
       });
 
+      print('Access token: ${loginDetails!.data.token}');
+
       if (jsonResponse.statusCode == 200) {
-        print(jsonResponse.body);
-        Iterable it = jsonDecode(jsonResponse.body);
+        print((jsonDecode(jsonResponse.body) as Map<String, dynamic>)['data']);
+        Iterable it =
+            (jsonDecode(jsonResponse.body) as Map<String, dynamic>)['data'];
         List<Historydata> historydata =
             it.map((e) => Historydata.fromJson(e)).toList();
         return historydata;
