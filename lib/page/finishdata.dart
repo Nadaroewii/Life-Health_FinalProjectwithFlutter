@@ -433,6 +433,8 @@ class _DataFinishState extends State<DataFinish> {
                       bool responsedata = await apiservice.getEncrypt(durarray,
                           disarray, datarray, kalarray, latarray, lonarray);
 
+                      print(responsedata);
+
                       if (responsedata) {
                         FormHelper.showSimpleAlertDialog(
                           context,

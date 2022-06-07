@@ -116,22 +116,22 @@ class _RecordDataState extends State<RecordData> {
               itemBuilder: (context, index) {
                 return Container(
                     child: Text('Activity Type : ' +
-                        listdata[index].dataact +
+                        listdata[index].dataact.toString() +
                         ' / ' +
                         ' Duration : ' +
-                        listdata[index].duration +
+                        listdata[index].duration.toString() +
                         ' / ' +
                         ' Distance : ' +
-                        listdata[index].distance +
+                        listdata[index].distance.toString() +
                         ' / ' +
                         ' Calories Burned : ' +
-                        listdata[index].kal +
+                        listdata[index].kal.toString() +
                         ' / ' +
                         ' Last Latitude : ' +
-                        listdata[index].lastlatitude +
+                        listdata[index].lastlatitude.toString() +
                         ' / ' +
                         ' Last Longitude : ' +
-                        listdata[index].lastlongitude));
+                        listdata[index].lastlongitude.toString()));
               },
               separatorBuilder: (context, index) {
                 return Divider();
