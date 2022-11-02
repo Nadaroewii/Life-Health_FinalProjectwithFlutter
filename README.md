@@ -13,7 +13,10 @@ The details of this apps:
 <b> Demo of Life-Health : Application human activity recognition </b> 
 
 <b> 1. Login and Register Page </b>
+
+
 ![ezgif com-gif-maker (9)](https://user-images.githubusercontent.com/89477206/199489805-356872a3-0f17-4486-810b-fd9a93708627.gif)
+
 
 
 <b> 2. Home Page of Diary Applications </b>
