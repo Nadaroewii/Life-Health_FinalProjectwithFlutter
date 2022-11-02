@@ -19,4 +19,6 @@ The details of this apps:
 
 
 
-<b> 2. Home Page of Diary Applications </b>
+<b> 2. Record Data Page from Life-Health Apps </b>
+
+![ezgif com-gif-maker (13) (1)](https://user-images.githubusercontent.com/89477206/199616419-6a1e4c74-9ede-4573-bf30-d07abf44a9ad.gif)
