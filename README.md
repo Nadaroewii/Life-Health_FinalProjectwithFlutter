@@ -12,3 +12,8 @@ The details of this apps:
 
 <b> Demo of Life-Health : Application human activity recognition </b> 
 
+<b> 1. Login and Register Page </b>
+
+
+
+<b> 2. Home Page of Diary Applications </b>
