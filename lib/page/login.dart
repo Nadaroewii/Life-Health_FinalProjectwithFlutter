@@ -187,14 +187,6 @@ class _LoginPageState extends State<LoginPage> {
                     txtColor: Colors.white,
                     borderRadius: 10)
                   )
-
-                  //      FlatButton(
-                    //      onPressed: ()=> Navigator.pushReplacement(context,
-                      //        MaterialPageRoute(builder: (context){
-                        //        return Menu();
-                          //    })),
-                          //child: Text("Sign In",
-                            //  style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),)
                       ],
                     ),
                   ),
