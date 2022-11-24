@@ -83,33 +83,6 @@ class _RecordDataState extends State<RecordData> {
                 height: 2.0,
                 color: Colors.black),
           ),
-          //FutureBuilder<Historydata>(
-          //future: historydata,
-          //builder: (context, snapshot) {
-          //if (snapshot.hasData) {
-          // return Text('Activity Type : ' +
-          // snapshot.data!.dataact +
-          // ' / ' +
-          // 'Duration : ' +
-          // snapshot.data!.duration +
-          // ' / ' +
-          // ' Distance : ' +
-          // snapshot.data!.distance +
-          //' / ' +
-          //' Calories Burned : ' +
-          //snapshot.data!.kal +
-          //' / ' +
-          //' Last Coordinate : ( ' +
-          //snapshot.data!.lastlatitude +
-          //' , ' +
-          //  snapshot.data!.lastlongitude +
-          //    ' )');
-          //} else if (snapshot.hasError) {
-          //return Text('${snapshot.error}');
-          //}
-
-          //  return const CircularProgressIndicator();
-          //  }),
           ListView.separated(
               scrollDirection: Axis.vertical,
               shrinkWrap: true,
