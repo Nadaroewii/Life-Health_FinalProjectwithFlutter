@@ -499,18 +499,7 @@ class _DataFinishState extends State<DataFinish> {
                             borderColor: Colors.white,
                             txtColor: Colors.white,
                             borderRadius: 10)),
-                    // SizedBox(height: 30),
-                    // Center(
-                    //     child: FormHelper.submitButton(
-                    //         "Log Out",
-                    //             () {
-                    //           SharedService.logout(context);
-                    //         },
-                    //         btnColor: Colors.brown,
-                    //         borderColor: Colors.white,
-                    //         txtColor: Colors.white,
-                    //         borderRadius: 10)
-                    // ),
+                  
                   ],
                 ),
               ),
